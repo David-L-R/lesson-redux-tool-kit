@@ -1,9 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  name: "",
-  email: "",
-  id: null,
+  name: "David",
+  email: "david.rajcher@gmail.com",
+  id: "9dsajkdakj42aedsa23a",
+  posts: {
+    upvoted: [1, 6, 7, 22, 57, 33, 61, 23],
+    downvoted: [2, 8, 44, 87, 64, 24, 41, 62],
+    saved: [3, 9, 66, 92],
+  },
 };
 
 export const user = createSlice({
@@ -12,8 +17,6 @@ export const user = createSlice({
   reducers: {},
 });
 
-// Action creators are generated for each case reducer function
-// as we add cases to our reducer we will also export the corresponding actions
 export const {} = user.actions;
 
 export default user.reducer;
