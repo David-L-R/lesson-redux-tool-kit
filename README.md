@@ -1,70 +1,47 @@
-# Getting Started with Create React App
+# Redux Challenge - Flying an airplane
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+You have a dashboard of a plane (`Dashboard.jsx`).
 
-## Available Scripts
+The different elements of the dashboard are in
 
-In the project directory, you can run:
+- `Engine.jsx` - controlling the 4 engines. Engines can be working or not (false / true)
+- `Navigator.jsx` - controlling the navigation system. This can be controlled manually, by the auto-pilot or remotely.
+- `Thrust.jsx` - this controls the amount of power you give the engines (0-100 per engine)
 
-### `npm start`
+All functionality should be controlled using only the components, the plane's slice and the plane's selector.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+You don't need to add new components, reducers (slices) or selectors! You should only add functionality inside them.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Feature 1 - Dashboard should be interactive
 
-### `npm test`
+1. Add functions to set the engines on and off by pressing their buttons. In each engine we should have a feedback if it is on or off (for example, edit the text of the button to show `Engine right OFF` and `Engine right ON`)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. Changing the options in the navigator should change the status in the navigation part of the redux state.
 
-### `npm run build`
+3. Changing the thrust should change the values in the reducer (redux state). Thrust should go between 0-100.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Feature 2 (ADVANCED) - Calculating total power
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+In order to calculate the total power consumed by the plane, we need to:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Multiply each engine by the thrust. So if the thrust is 80 and we have 2 engines working, the total power consumed by the engines will be 160.
 
-### `npm run eject`
+2. Each Navigation system consumes different power. Manual navigation does not consumes anything. Auto pilot consumes 50 and remote consumes Thrust \* 2. So if we use remote and have a thrust of 100, the power consumed by the navigation system will be 200.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Feature 3 (NINJA) - Preventing exceeding power supply
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The maximum safe power consumption of the plane at any given moment is 300.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+If we reached it, we should block the pilot from adding any additional power.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+For example, if:
 
-## Learn More
+- 3 engines are on
+- thrust is 90
+- navigation is manual
+- total power is 270
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The pilot should not
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- be able to activate another engine
+- navigation should not be changed (cause it will exceed)
