@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const status = ["manual", "autopilot", "controlled-remotely"];
+export const status = ["manual", "autopilot", "controlled-remotely"];
 
 const initialState = {
   engines: {
@@ -27,9 +27,16 @@ export const plane = createSlice({
     changeNavigation: (state, action) => {
       state.navigation = status[action.payload.status];
     },
+    turnThrustUp: (state) => {
+      state.thrust = state.thrust + 10;
+    },
+    turnThrustDown: (state) => {
+      state.thrust = state.thrust - 10;
+    },
   },
 });
 
-export const { toggleEngine, changeNavigation } = plane.actions;
+export const { toggleEngine, changeNavigation, turnThrustDown, turnThrustUp } =
+  plane.actions;
 
 export default plane.reducer;
