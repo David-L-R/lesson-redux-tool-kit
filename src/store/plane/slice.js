@@ -17,9 +17,19 @@ const initialState = {
 export const plane = createSlice({
   name: "plane",
   initialState,
-  reducers: {},
+  reducers: {
+    toggleEngine: (state, action) => {
+      state.engines = {
+        ...state.engines,
+        [action.payload.engine]: !state.engines[action.payload.engine],
+      };
+    },
+    changeNavigation: (state, action) => {
+      state.navigation = status[action.payload.status];
+    },
+  },
 });
 
-export const {} = plane.actions;
+export const { toggleEngine, changeNavigation } = plane.actions;
 
 export default plane.reducer;
