@@ -1,4 +1,4 @@
-# Redux Challenge - Flying an airplane
+# Redux Challenge - ✈️ Flying an airplane
 
 You have a dashboard of a plane (`Dashboard.jsx`).
 
@@ -20,7 +20,7 @@ You don't need to add new components, reducers (slices) or selectors! You should
 
 3. Changing the thrust should change the values in the reducer (redux state). Thrust should go between 0-100. Trust only goes up and down by 10 (10, 20, 30...)
 
-## Feature 2 (ADVANCED) - Calculating total power
+## Feature 2 (💪 ADVANCED) - Calculating total power
 
 In order to calculate the total power consumed by the plane, we need to:
 
@@ -28,7 +28,7 @@ In order to calculate the total power consumed by the plane, we need to:
 
 2. Each Navigation system consumes different power. Manual navigation does not consumes anything. Auto pilot consumes 50 and remote consumes Thrust \* 2. So if we use remote and have a thrust of 100, the power consumed by the navigation system will be 200.
 
-## Feature 3 (NINJA) - Preventing exceeding power supply
+## Feature 3 (🥷 NINJA) - Preventing exceeding power supply
 
 The maximum safe power consumption of the plane at any given moment is 300.
 
