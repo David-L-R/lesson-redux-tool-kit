@@ -18,7 +18,7 @@ You don't need to add new components, reducers (slices) or selectors! You should
 
 2. Changing the options in the navigator should change the status in the navigation part of the redux state.
 
-3. Changing the thrust should change the values in the reducer (redux state). Thrust should go between 0-100.
+3. Changing the thrust should change the values in the reducer (redux state). Thrust should go between 0-100. Trust only goes up and down by 10 (10, 20, 30...)
 
 ## Feature 2 (ADVANCED) - Calculating total power
 
